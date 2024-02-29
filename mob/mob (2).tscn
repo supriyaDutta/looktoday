@@ -1,0 +1,145 @@
+[gd_scene load_steps=11 format=3 uid="uid://cp326v11hnvap"]
+
+[ext_resource type="Script" path="res://mob/mob.gd" id="1_2k5wc"]
+[ext_resource type="Texture2D" uid="uid://dl4yg67dr7hpj" path="res://images/character/character.png" id="2_66e2g"]
+[ext_resource type="PackedScene" uid="uid://bwd0bp60rwb6r" path="res://mob/sword.tscn" id="3_krlh5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nbnbc"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mhg2h"]
+radius = 17.72
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3vw2q"]
+radius = 69.1158
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_usap0"]
+size = Vector2(10, 8)
+
+[sub_resource type="Animation" id="Animation_g4kwy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("weapon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_xlkel"]
+resource_name = "attackLeft"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("weapon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 4.71239]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7va5t"]
+_data = {
+"RESET": SubResource("Animation_g4kwy"),
+"attackLeft": SubResource("Animation_xlkel")
+}
+
+[node name="Mob" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
+collision_layer = 4
+collision_mask = 7
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_2k5wc")
+speed = 100
+nav_agent = NodePath("Navigation/NavigationAgent2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_66e2g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nbnbc")
+
+[node name="Navigation" type="Node2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
+avoidance_enabled = true
+radius = 5.0
+
+[node name="ReculateTimer" type="Timer" parent="Navigation"]
+wait_time = 0.1
+autostart = true
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Agro" type="Area2D" parent="Node2D"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Agro"]
+shape = SubResource("CircleShape2D_mhg2h")
+debug_color = Color(0.4, 0.6, 0.262745, 0.419608)
+
+[node name="DeAgro" type="Area2D" parent="Node2D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/DeAgro"]
+shape = SubResource("CircleShape2D_3vw2q")
+debug_color = Color(0, 0.580392, 0.8, 0.419608)
+
+[node name="Interactions" type="Node2D" parent="."]
+
+[node name="HitBox" type="Area2D" parent="Interactions"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/HitBox"]
+shape = SubResource("RectangleShape2D_usap0")
+
+[node name="weapon" type="Node2D" parent="."]
+
+[node name="sword" parent="weapon" instance=ExtResource("3_krlh5")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7va5t")
+}
+
+[connection signal="velocity_computed" from="Navigation/NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="timeout" from="Navigation/ReculateTimer" to="." method="_on_reculate_timer_timeout"]
+[connection signal="area_entered" from="Node2D/Agro" to="." method="_on_agro_area_entered"]
+[connection signal="area_exited" from="Node2D/DeAgro" to="." method="_on_de_agro_area_exited"]

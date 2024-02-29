@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://5kd82px6dg6l"]
+
+[ext_resource type="Script" path="res://mob/runaway_mob.gd" id="1_0a7n8"]
+[ext_resource type="Texture2D" uid="uid://dl4yg67dr7hpj" path="res://images/character/character.png" id="2_pqkjo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jud07"]
+size = Vector2(24, 25)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iwd46"]
+radius = 43.0465
+
+[node name="runaway_mob" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_0a7n8")
+nav_agent = NodePath("Navigation/NavigationAgent2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_pqkjo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_jud07")
+
+[node name="Navigation" type="Node2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
+avoidance_enabled = true
+radius = 5.0
+
+[node name="recalculate_timer" type="Timer" parent="Navigation"]
+wait_time = 0.1
+autostart = true
+
+[node name="Area" type="Node2D" parent="."]
+
+[node name="Repel" type="Area2D" parent="Area"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/Repel"]
+shape = SubResource("CircleShape2D_iwd46")
+
+[connection signal="velocity_computed" from="Navigation/NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="timeout" from="Navigation/recalculate_timer" to="." method="_on_recalculate_timer_timeout"]
+[connection signal="area_entered" from="Area/Repel" to="." method="_on_repel_area_entered"]
+[connection signal="area_exited" from="Area/Repel" to="." method="_on_repel_area_exited"]

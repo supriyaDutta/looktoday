@@ -1,0 +1,203 @@
+[gd_scene load_steps=16 format=3 uid="uid://w0gg2kvy6rqn"]
+
+[ext_resource type="Script" path="res://scene/GameOverScene.gd" id="1_jdltw"]
+[ext_resource type="Texture2D" uid="uid://bew7oxvrgh4qn" path="res://images/screens/dyingscene.png" id="2_5cnr8"]
+[ext_resource type="FontFile" uid="uid://cdmwpqqodfjrf" path="res://fonts/PixeloidSans.ttf" id="2_sxlhh"]
+[ext_resource type="FontFile" uid="uid://hol1sjfkmd37" path="res://fonts/PixeloidSans-Bold.ttf" id="3_0c1kd"]
+[ext_resource type="StyleBox" uid="uid://b8ypybwejkje8" path="res://styles/redButtondefault.tres" id="4_1kcuk"]
+[ext_resource type="StyleBox" uid="uid://3stg2bh1hf8h" path="res://styles/redButtonInt.tres" id="5_7s0p8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3lfh2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vhoue"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mt38v"]
+bg_color = Color(0.870588, 0.870588, 0.870588, 0.301961)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4b5pu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pdpe8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0xtk7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y05rv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nngpd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d88yl"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_jdltw")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5cnr8")
+patch_margin_left = 24
+patch_margin_top = 80
+patch_margin_right = 60
+patch_margin_bottom = 32
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="header" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_3lfh2")
+
+[node name="body" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vhoue")
+
+[node name="1stpage" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer/body"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mt38v")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/body/1stpage"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer/body/1stpage/MarginContainer"]
+layout_mode = 2
+
+[node name="storybtn" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer/body/1stpage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4b5pu")
+
+[node name="Narrative" type="Button" parent="Control/MarginContainer/VBoxContainer/body/1stpage/MarginContainer/VBoxContainer/storybtn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_colors/icon_normal_color = Color(0.937255, 0.937255, 0.937255, 1)
+theme_override_fonts/font = ExtResource("3_0c1kd")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = ExtResource("4_1kcuk")
+theme_override_styles/hover = ExtResource("5_7s0p8")
+theme_override_styles/pressed = ExtResource("5_7s0p8")
+text = "What happened??"
+icon_alignment = 1
+expand_icon = true
+
+[node name="retry" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer/body/1stpage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pdpe8")
+
+[node name="Retry" type="Button" parent="Control/MarginContainer/VBoxContainer/body/1stpage/MarginContainer/VBoxContainer/retry"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("3_0c1kd")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = ExtResource("4_1kcuk")
+theme_override_styles/hover = ExtResource("5_7s0p8")
+theme_override_styles/pressed = ExtResource("5_7s0p8")
+text = "Retry"
+
+[node name="1stpage2" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer/body"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mt38v")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/body/1stpage2"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer/body/1stpage2/MarginContainer"]
+layout_mode = 2
+
+[node name="question" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer/body/1stpage2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0xtk7")
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/body/1stpage2/MarginContainer/VBoxContainer/question"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_0c1kd")
+theme_override_font_sizes/font_size = 9
+text = "Would you like to change how you look?"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer/body/1stpage2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_y05rv")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/body/1stpage2/MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="toDressingroom" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer/body/1stpage2/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_nngpd")
+
+[node name="Button" type="Button" parent="Control/MarginContainer/VBoxContainer/body/1stpage2/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/toDressingroom"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_sxlhh")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = ExtResource("4_1kcuk")
+theme_override_styles/hover = ExtResource("5_7s0p8")
+text = "Yes, Change me"
+
+[node name="togame" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer/body/1stpage2/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_d88yl")
+
+[node name="togame" type="Button" parent="Control/MarginContainer/VBoxContainer/body/1stpage2/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/togame"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_sxlhh")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = ExtResource("4_1kcuk")
+theme_override_styles/hover = ExtResource("5_7s0p8")
+theme_override_styles/pressed = ExtResource("5_7s0p8")
+text = "No, I am good"
+
+[node name="footer" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vhoue")
+
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/body/1stpage/MarginContainer/VBoxContainer/storybtn/Narrative" to="." method="_on_narrative_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/body/1stpage/MarginContainer/VBoxContainer/retry/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/body/1stpage2/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/toDressingroom/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/body/1stpage2/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/togame/togame" to="." method="_on_togame_pressed"]

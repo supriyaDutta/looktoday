@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://cma35ifep5pci"]
+
+[ext_resource type="Script" path="res://scene/entry_scene.gd" id="1_nvjp0"]
+[ext_resource type="FontFile" uid="uid://cdmwpqqodfjrf" path="res://fonts/PixeloidSans.ttf" id="1_wun42"]
+[ext_resource type="PackedScene" uid="uid://6n8jwc5ui77u" path="res://player/influencer_player.tscn" id="3_s7a0h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yqfss"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03qbg"]
+
+[node name="entryScene" type="Node2D"]
+script = ExtResource("1_nvjp0")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_top = 79.0
+offset_right = 224.0
+offset_bottom = 160.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxEmpty_yqfss")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_wun42")
+theme_override_font_sizes/font_size = 9
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
+vertical_alignment = 2
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_wun42")
+theme_override_font_sizes/font_size = 9
+text = ">"
+
+[node name="targetArea" type="Area2D" parent="."]
+position = Vector2(107, -14)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="targetArea"]
+shape = SubResource("RectangleShape2D_03qbg")
+
+[node name="InfluencerPlayer" parent="." instance=ExtResource("3_s7a0h")]
+position = Vector2(108, 68)
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="area_entered" from="targetArea" to="." method="_on_target_area_area_entered"]

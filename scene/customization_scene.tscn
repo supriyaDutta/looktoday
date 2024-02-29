@@ -1,0 +1,325 @@
+[gd_scene load_steps=27 format=3 uid="uid://q6jwrqlu1ia5"]
+
+[ext_resource type="Script" path="res://scene/customization_scene.gd" id="1_na1d4"]
+[ext_resource type="Texture2D" uid="uid://dl4yg67dr7hpj" path="res://images/character/character.png" id="1_vllab"]
+[ext_resource type="Texture2D" uid="uid://dmullyi2tsspl" path="res://images/screens/dressingroom.png" id="2_1ma53"]
+[ext_resource type="Texture2D" uid="uid://cdnupm0u5xl3t" path="res://images/screens/storypixel.png" id="2_7jnel"]
+[ext_resource type="PackedScene" uid="uid://clwfx1a4xt3d1" path="res://player/character.tscn" id="2_vgkup"]
+[ext_resource type="FontFile" uid="uid://cdmwpqqodfjrf" path="res://fonts/PixeloidSans.ttf" id="4_77olf"]
+[ext_resource type="StyleBox" uid="uid://bffapkh70lt4y" path="res://styles/panelStyle1.tres" id="4_m07ve"]
+[ext_resource type="FontFile" uid="uid://hol1sjfkmd37" path="res://fonts/PixeloidSans-Bold.ttf" id="5_jvvl4"]
+[ext_resource type="Theme" uid="uid://bwcebg32rd42" path="res://styles/fontBold.tres" id="5_kit4c"]
+[ext_resource type="Texture2D" uid="uid://bh4lep8j32xbr" path="res://images/character/hair icon.png" id="6_6ecj4"]
+[ext_resource type="Texture2D" uid="uid://d286dgg7s8u0q" path="res://images/character/outfit icon.png" id="7_dwwd7"]
+[ext_resource type="StyleBox" uid="uid://ot2or1x7kljp" path="res://styles/button.tres" id="8_s5m08"]
+[ext_resource type="StyleBox" uid="uid://bg1q1f0dxs6es" path="res://styles/hoverClick.tres" id="9_3q8se"]
+[ext_resource type="StyleBox" uid="uid://bbkjjasm5v6sf" path="res://styles/panelwhite.tres" id="10_kq32d"]
+[ext_resource type="StyleBox" uid="uid://cgud7vggdpwp8" path="res://styles/buttonR.tres" id="12_pcp5h"]
+[ext_resource type="StyleBox" uid="uid://yhffvvvg6hpu" path="res://styles/hoverClickR.tres" id="13_gpnc0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cwfau"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dqxdn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_adksp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wcmcf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s43tr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7uof2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_crwe5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f055f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x3aj7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ad6bi"]
+
+[node name="Customization_Scene" type="Node2D"]
+script = ExtResource("1_na1d4")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 224.0
+offset_bottom = 159.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="background" type="NinePatchRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7jnel")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="backgroundf" type="NinePatchRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1ma53")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Header" type="Panel" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+theme_override_styles/panel = ExtResource("4_m07ve")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/Header"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/Header/MarginContainer"]
+layout_mode = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer/Header/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_cwfau")
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/Header/MarginContainer/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+theme = ExtResource("5_kit4c")
+theme_override_colors/font_color = Color(0.25098, 0.337255, 0.333333, 1)
+text = "Dressing Room"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer/Header/MarginContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/Header/MarginContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_77olf")
+theme_override_font_sizes/font_size = 9
+text = "Dressing Room"
+autowrap_mode = 2
+
+[node name="Body" type="Panel" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+theme_override_styles/panel = ExtResource("4_m07ve")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/Body"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer/Body/MarginContainer"]
+layout_mode = 2
+
+[node name="hair" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer/Body/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dqxdn")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/Body/MarginContainer/VBoxContainer/hair"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer/Body/MarginContainer/VBoxContainer/hair/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_adksp")
+
+[node name="hairDec" type="Button" parent="Control/MarginContainer/VBoxContainer/Body/MarginContainer/VBoxContainer/hair/HBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("5_jvvl4")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = ExtResource("8_s5m08")
+theme_override_styles/hover = ExtResource("9_3q8se")
+theme_override_styles/pressed = ExtResource("9_3q8se")
+text = "<"
+alignment = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer/Body/MarginContainer/VBoxContainer/hair/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+theme_override_styles/panel = ExtResource("10_kq32d")
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/Body/MarginContainer/VBoxContainer/hair/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+texture = ExtResource("6_6ecj4")
+stretch_mode = 3
+
+[node name="PanelContainer3" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer/Body/MarginContainer/VBoxContainer/hair/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wcmcf")
+
+[node name="hairInc" type="Button" parent="Control/MarginContainer/VBoxContainer/Body/MarginContainer/VBoxContainer/hair/HBoxContainer/PanelContainer3"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("5_jvvl4")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = ExtResource("12_pcp5h")
+theme_override_styles/hover = ExtResource("13_gpnc0")
+theme_override_styles/pressed = ExtResource("13_gpnc0")
+text = ">"
+alignment = 0
+
+[node name="body" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer/Body/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+theme_override_styles/panel = SubResource("StyleBoxEmpty_s43tr")
+
+[node name="player" type="Node2D" parent="Control/MarginContainer/VBoxContainer/Body/MarginContainer/VBoxContainer/body"]
+position = Vector2(98, 22)
+scale = Vector2(2, 2)
+
+[node name="body" type="Sprite2D" parent="Control/MarginContainer/VBoxContainer/Body/MarginContainer/VBoxContainer/body/player"]
+texture = ExtResource("1_vllab")
+
+[node name="characterlook" parent="Control/MarginContainer/VBoxContainer/Body/MarginContainer/VBoxContainer/body/player" instance=ExtResource("2_vgkup")]
+
+[node name="outfit" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer/Body/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7uof2")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/Body/MarginContainer/VBoxContainer/outfit"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer/Body/MarginContainer/VBoxContainer/outfit/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_crwe5")
+
+[node name="outfitDec" type="Button" parent="Control/MarginContainer/VBoxContainer/Body/MarginContainer/VBoxContainer/outfit/HBoxContainer2/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("5_jvvl4")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = ExtResource("8_s5m08")
+theme_override_styles/hover = ExtResource("9_3q8se")
+theme_override_styles/pressed = ExtResource("9_3q8se")
+text = "<"
+alignment = 2
+icon_alignment = 2
+expand_icon = true
+
+[node name="PanelContainer2" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer/Body/MarginContainer/VBoxContainer/outfit/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+theme_override_styles/panel = ExtResource("10_kq32d")
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/Body/MarginContainer/VBoxContainer/outfit/HBoxContainer2/PanelContainer2"]
+layout_mode = 2
+texture = ExtResource("7_dwwd7")
+stretch_mode = 3
+
+[node name="PanelContainer3" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer/Body/MarginContainer/VBoxContainer/outfit/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_f055f")
+
+[node name="outfitInc" type="Button" parent="Control/MarginContainer/VBoxContainer/Body/MarginContainer/VBoxContainer/outfit/HBoxContainer2/PanelContainer3"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("5_jvvl4")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = ExtResource("12_pcp5h")
+theme_override_styles/hover = ExtResource("13_gpnc0")
+theme_override_styles/pressed = ExtResource("13_gpnc0")
+text = ">"
+alignment = 0
+expand_icon = true
+
+[node name="footer" type="Panel" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_x3aj7")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/footer"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -65.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer/footer/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ad6bi")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/footer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
+
+[node name="changeScene" type="Button" parent="Control/MarginContainer/VBoxContainer/footer/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("5_kit4c")
+theme_override_styles/normal = ExtResource("8_s5m08")
+theme_override_styles/hover = ExtResource("9_3q8se")
+theme_override_styles/pressed = ExtResource("9_3q8se")
+text = "Ready >"
+
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Body/MarginContainer/VBoxContainer/hair/HBoxContainer/PanelContainer/hairDec" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Body/MarginContainer/VBoxContainer/hair/HBoxContainer/PanelContainer3/hairInc" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Body/MarginContainer/VBoxContainer/outfit/HBoxContainer2/PanelContainer/outfitDec" to="." method="_on_outfit_dec_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Body/MarginContainer/VBoxContainer/outfit/HBoxContainer2/PanelContainer3/outfitInc" to="." method="_on_outfit_inc_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/footer/MarginContainer/PanelContainer/MarginContainer/changeScene" to="." method="_on_change_scene_pressed"]

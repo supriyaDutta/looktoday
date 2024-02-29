@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvsc7jr5rblwl"]
+
+[ext_resource type="Script" path="res://player/character_skin.gd" id="1_e8o4r"]
+[ext_resource type="Texture2D" uid="uid://dl4yg67dr7hpj" path="res://images/character/character.png" id="2_btgvh"]
+[ext_resource type="PackedScene" uid="uid://clwfx1a4xt3d1" path="res://player/character.tscn" id="3_j7t3t"]
+
+[node name="Character_customization" type="Node2D"]
+
+[node name="player" type="Node2D" parent="."]
+script = ExtResource("1_e8o4r")
+
+[node name="body" type="Sprite2D" parent="player"]
+texture = ExtResource("2_btgvh")
+
+[node name="characterlook" parent="player" instance=ExtResource("3_j7t3t")]
